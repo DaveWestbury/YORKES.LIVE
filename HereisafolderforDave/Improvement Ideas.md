@@ -32,6 +32,11 @@ Selling prints etc with your logo in the corner of beach photos could be another
 Little shaka symbol would also be cool!
 #yorkeslive would be the tag I think
 
+## Prints
+Photos of road signs, YP landmarks etc
+Beaches
+Historic sites
+
 
 ## Changelog completed
 Shipwreck circle locations added on the interactive map
