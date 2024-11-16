@@ -203,8 +203,7 @@ require "db_connect.php";
 
 if ($connectToServer) {
     // Use $_GET to retrieve the 'location' parameter
-    $randomId = rand(1, 5);
-    $sql = "SELECT * FROM `sponsors` WHERE `id` = $randomId";
+    $sql = "SELECT * FROM `sponsors` ORDER BY RAND() LIMIT 1";
     $result = mysqli_query($connectToServer, $sql);
     
     if ($result) {
