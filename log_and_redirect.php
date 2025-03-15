@@ -29,3 +29,5 @@ if ($connectToServer) {
     // Error connecting to the server
     echo "Error connecting to the database.";
 }
+
+?>
