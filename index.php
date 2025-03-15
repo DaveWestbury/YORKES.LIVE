@@ -38,7 +38,7 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <!-- MODEL VIEWER -->
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 
     <!-- BOOTSTRAP CSSs -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
@@ -682,17 +682,8 @@
         });
         </script>
 
-
-        <!-- MODEL VIEWER -->
-        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
         <!-- JQUERY UI -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.1/jquery-ui.min.js"></script>
-
-        <!-- masonry for pinterest columns -->
-        <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
-            crossorigin="anonymous" async></script>
 
         <script>
         //intialise tooltips (must be after min.js)
