@@ -197,63 +197,36 @@ if (count($validImages) === 0) {
 }
 
 
+// handles sponsors output
 
-//handles sponsors output
-require "db_connect.php";
+// Fetch sponsor data from the API
+$apiUrl = "https://westburydigital.com.au/api/rand";
+$apiResponse = file_get_contents($apiUrl);
+$sponsorData = json_decode($apiResponse, true);
 
-if ($connectToServer) {
-    // Use $_GET to retrieve the 'location' parameter
-    $sql = "SELECT * FROM `sponsors` ORDER BY RAND() LIMIT 1";
-    $result = mysqli_query($connectToServer, $sql);
+if ($sponsorData['status'] == 'success') {
+    // Extract sponsor information from the API response
+    $sponsorName = htmlspecialchars($sponsorData['data']['sponsorName'], ENT_QUOTES, 'UTF-8');
+    $sponsorSpeltName = htmlspecialchars($sponsorData['data']['sponsorSpeltName'], ENT_QUOTES, 'UTF-8');
+    $sponsorWriteUp = htmlspecialchars($sponsorData['data']['sponsorWriteUp'], ENT_QUOTES, 'UTF-8');
+    $sponsorURL = htmlspecialchars($sponsorData['data']['sponsorURL'], ENT_QUOTES, 'UTF-8');
+    $sponsorimg = htmlspecialchars($sponsorData['data']['sponsorImg'], ENT_QUOTES, 'UTF-8');
     
-    if ($result) {
-        if (mysqli_num_rows($result) > 0) {
-            // Output data of each row
-            while ($row = mysqli_fetch_assoc($result)) {
-                // Load variables and sanitize output for XSS attack
-                $sponsorName = htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8');
-                $sponsorSpeltName = htmlspecialchars($row['speltname'], ENT_QUOTES, 'UTF-8');
-                $sponsorWriteUp = htmlspecialchars($row['writeup'], ENT_QUOTES, 'UTF-8');
-                $sponsorURL = htmlspecialchars($row['url'], ENT_QUOTES, 'UTF-8');
-                $sponsorimg = htmlspecialchars($row['img'], ENT_QUOTES, 'UTF-8');
-            }
-           
-            // Output the sponsor information as a clickable form
-             $sponsorOutput = "
-                <small>Local Sponsor</small>
-                <form id='sponsorForm' method='POST' action='log_and_redirect.php'>
-                    <input type='hidden' name='url' value='" . $sponsorURL . "'>
-                    <a href='#' id='sponsorLink' class='stretched-link'></a>
-                        <div class='d-flex justify-content-center'>
-                            <img class='img-fluid pb-3' width='60%' src='./img/sponsors/" . $sponsorimg . ".webp' alt='advertising logo for " . $sponsorSpeltName . "'>
-                        </div>
-                        <h3 class='text-center text-uppercase text-reset'>" . $sponsorSpeltName . "<span class='text-orange'>.</span></h3>
-                        <p class='text-reset'>" . $sponsorWriteUp . "</p>
-                    
-                </form>
-
-                <script>
-                    document.getElementById('sponsorLink').addEventListener('click', function(e) {
-                        e.preventDefault(); // Prevent the default anchor behavior
-
-                        // Submit the form via JavaScript
-                        document.getElementById('sponsorForm').submit();
-                    });
-                </script>
-                ";
-        } else {
-            echo "No sponsors found.";
-        }
-    } else {
-        // Error executing query
-        echo "Error executing query: " . mysqli_error($connectToServer);
-    }
-    
-    mysqli_close($connectToServer);
+    // Output the sponsor information as a clickable form
+    $sponsorOutput = "
+        <small>Local Sponsor</small>
+        <a href='https://westburydigital.com.au/api/click/index.php?url=".$sponsorURL."&referer=yorkes.live' id='sponsorLink' class='stretched-link'></a>
+        <div class='d-flex justify-content-center'>
+            <img class='img-fluid pb-3' width='60%' src='./img/sponsors/" . $sponsorimg . ".webp' alt='advertising logo for " . $sponsorSpeltName . "'>
+        </div>
+        <h3 class='text-center text-uppercase text-reset'>" . $sponsorSpeltName . "<span class='text-orange'>.</span></h3>
+        <p class='text-reset'>" . $sponsorWriteUp . "</p>
+            
+        ";
 } else {
-    // Error connecting to the server
-    echo "Error connecting to the database.";
+    $sponsorOutput = "No sponsors found";
 }
+
 
            echo "    
            <title>YORKES.LIVE | " . $safeSpeltName .  " </title>
