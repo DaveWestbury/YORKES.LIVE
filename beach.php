@@ -24,7 +24,7 @@
 
     <!-- END OF PHP -->
 
-    <?php include './footer.php'?>
+    <?php include '../module/footer.php'?>
 
     <script>
     //LOGO BOUNCE
