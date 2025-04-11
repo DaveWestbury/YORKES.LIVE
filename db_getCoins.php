@@ -1,5 +1,5 @@
 <?php
- require"db_connect.php";
+ require_once "db_connect.php";
 
  if (mysqli_connect_errno())
  {
@@ -21,36 +21,9 @@
 
 	echo $row["coins"]; 
 	
-// 	if (mysqli_num_rows($result) > 0) {
-// 		// output data of each row
-// 		while($row = mysqli_fetch_assoc($result)) {
-// echo  $row["coins"];
-// 		}}
-	//handles icons
-	//$iconsArray = explode(",", $row["icons"]);
-
-	// $sql = "SELECT 1 FROM mainpage WHERE ip = '$ip' LIMIT 1";
-	// $result = $connectToServer->query($sql);
-
-	// if ($result->num_rows > 0) {
-	// 	// output data of each row
-	// 	$row = mysqli_fetch_array($result);
-	// 		echo $row['coins'];
-	// 		echo "";
-		
-		
-	// } else {
-  	// 	echo "0 results";
-	// }
-
-
 } else {
   echo "db_error - getCoins";
 }
 	
-	
-
-
-
 
 ?>

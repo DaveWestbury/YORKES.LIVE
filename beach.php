@@ -1,30 +1,11 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+<?php include "./modules/header.php" ?>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-659MYBSRDE"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
+<?php include "db_singlebeach.php" ?>
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'G-659MYBSRDE');
-    </script>
-
-
-
-    <!-- START OF PHP  -->
-
-    <?php include "db_singlebeach.php" ?>
-
-    <!-- END OF PHP -->
-
-    <?php include '../module/footer.php'?>
+<?php include './modules/footer.php'?>
 
     <script>
     //LOGO BOUNCE
