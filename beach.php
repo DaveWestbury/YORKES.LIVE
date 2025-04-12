@@ -3,9 +3,10 @@
 
 <?php include "./modules/header.php" ?>
 
-<?php include "db_singlebeach.php" ?>
-
-<?php include './modules/footer.php'?>
+<body data-bs-spy='scroll' data-bs-target='#navbarID'>
+    <?php  include "./modules/nav.php" ?>
+    <?php include "db_singlebeach.php" ?>
+    <?php include './modules/footer.php'?>
 
     <script>
     //LOGO BOUNCE

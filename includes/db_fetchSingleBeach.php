@@ -25,7 +25,9 @@ if ($connectToServer) {
             $safeAccommodation = $row['accommodation'];
             $safeTitleImage = $row["title_image"];
             $safeInstagram = $row['instagram'];
-            $safeGoogleMaps = $row['googlemap'];
+            $safeGoogleMaps = $row['googlemap'];   
+            $safeIcons = $row['icons'];
+
 
             // Output head block
            
