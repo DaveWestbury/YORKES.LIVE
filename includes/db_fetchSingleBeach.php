@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-require_once "db_connect.php"; 
+require_once 'db_connect.php';
 
 if ($connectToServer) {
     // Sanitize input
@@ -25,22 +25,20 @@ if ($connectToServer) {
             $safeAccommodation = $row['accommodation'];
             $safeTitleImage = $row["title_image"];
             $safeInstagram = $row['instagram'];
-            $safeGoogleMaps = $row['googlemap'];   
+            $safeGoogleMaps = $row['googlemap'];
             $safeIcons = $row['icons'];
 
 
             // Output head block
-           
+
         }
     } else {
         echo "No results found.";
     }
 
     $stmt->close();
-    mysqli_close($connectToServer);
-}
-else {
+    //mysqli_close($connectToServer);
+} else {
     echo "Connection failed: " . mysqli_connect_error();
 }
-
-?>
+ ?>

@@ -32,7 +32,7 @@
                                 Thankyou for taking the time to look through this website and arrive at the end. I
                                 appreciate you!
                             </p>
-                            <img class="" src="./img/cobranding-ondark-mono.png" height='100px' alt="SA Great!">
+                            <img class="" src="<?= BASE_URL ?>img/cobranding-ondark-mono.png" height='100px' alt="SA Great!">
                         </div>
 
                         <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">

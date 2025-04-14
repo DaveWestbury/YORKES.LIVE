@@ -1,5 +1,6 @@
 <?php
- require_once "db_connect.php";
+
+require_once "db_connect.php";
 
  if (mysqli_connect_errno())
  {

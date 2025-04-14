@@ -1,5 +1,9 @@
 <?php
-require "./db_connect.php";
+require_once BASE_PATH . "db_connect.php";
+
+if (!isset($connectToServer)) {
+    echo "Connection variable not set.";
+}
 
 if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -12,7 +16,7 @@ if ($connectToServer) {
     $sql = "SELECT coins FROM mainpage WHERE ip = '$ip' LIMIT 1";
     $result = mysqli_query($connectToServer, $sql);
 
-    if ($result) {
+   if ($result) {
         $row = mysqli_fetch_assoc($result);
         if ($row) {
             $shakaCoins = $row["coins"];
@@ -22,7 +26,10 @@ if ($connectToServer) {
             echo "No record found for IP: $ip";
         }
     } else {
-        echo "Query failed: " . mysqli_error($connectToServer);
+        echo "Query failed: " . mysqli_error($connectToServer) . "<br>";
+        echo "SQL: " . $sql;
+        echo $ip;
+        echo $connectToServer;
     }
 } else {
     echo "db_error - getCoins";

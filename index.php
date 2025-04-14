@@ -122,7 +122,7 @@
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="lakes" onchange="valueChanged()" disabled>
-                            <label class="form-check-label" for="lakes"><a href="./shipwrecks.php">Shipwrecks</a> (Coming Soon)</label>
+                            <label class="form-check-label" for="lakes"><a href="./pages/shipwrecks.php">Shipwrecks</a> (Coming Soon)</label>
                         </div>
                         <p class="card-text"><small class="text-muted">Version 2.2 (Pretty URLs Update)</small></p>
                     </div>
@@ -254,7 +254,7 @@
                         <div class="col-md-6">
                             <h4 class="text-center ">Recent Additons<span class="text-orange">.</span></h4>
                             <ul class="list-group list-group-flush px-4 ">
-                                <li class="list-group-item text-light border-orange bg-transparent"><a class="text-white" href="./shipwrecks.php">Shipwrecks</a></li>
+                                <li class="list-group-item text-light border-orange bg-transparent"><a class="text-white" href="./pages/shipwrecks.php">Shipwrecks</a></li>
                                 <li class="list-group-item text-light border-orange bg-transparent">Focus and zoom to the beach selected</li>
                                 <li class="list-group-item text-light border-orange bg-transparent"><a class="text-white" href="./shell/">Shell Beach</a></li>
                                 <li class="list-group-item text-light border-orange bg-transparent">Pretty URLs</li>

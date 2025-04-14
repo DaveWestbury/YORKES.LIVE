@@ -1,8 +1,9 @@
 <?php 
 
-include_once './includes/db_fetchSingleBeach.php';
+include_once './includes/db_fetchSingleBeach.php';?>
 
-echo "
+<?php require_once __DIR__ . '/../config.php'; ?>
+
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src='https://www.googletagmanager.com/gtag/js?id=G-659MYBSRDE'></script>
@@ -13,10 +14,10 @@ echo "
         gtag('config', 'G-659MYBSRDE');
     </script>
 
-    <title>YORKES.LIVE | " . $safeSpeltName . "</title>
+    <title>YORKES.LIVE | <?= $safeSpeltName ?></title>
     <meta charset='UTF-8'>
-    <meta name='description' content='This is " . $safeSpeltName . " on the sunny Yorke Peninsula. Come learn more about the beach and what it has to offer. Don&apos;t forget to vote for " . $safeSpeltName . "'>
-    <meta name='keywords' content='yorkes " . $safeSpeltName . " yorke peninsula beaches map best surf'>
+    <meta name='description' content='This is <?= $safeSpeltName ?> on the sunny Yorke Peninsula. Come learn more about the beach and what it has to offer. Don&apos;t forget to vote for " . $safeSpeltName . "'>
+    <meta name='keywords' content='yorkes <?= $safeSpeltName ?> yorke peninsula beaches map best surf'>
     <meta name='author' content='Written by D.W. Hills, Length: 1 pages'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 
@@ -26,7 +27,8 @@ echo "
     <meta property='og:description' content='An interactive map of the Yorke Peninsula&apos;s best beaches. As voted on by you.' />
     <meta property='og:image' content='https://yorkes.live/fb.png' />
 
-    <link type='text/css' href='./styles.css' rel='stylesheet' />
+    <link rel="stylesheet" href="<?= BASE_URL ?>styles.css?v=1.0">
+
     <link rel='apple-touch-icon' sizes='180x180' href='./apple-touch-icon.png'>
     <link rel='icon' type='image/png' sizes='32x32' href='./favicon-32x32.png'>
     <link rel='icon' type='image/png' sizes='16x16' href='./favicon-16x16.png'>
@@ -47,5 +49,4 @@ echo "
     <!-- BOOTSTRAP JS -->
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' 
         integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous'></script>
-</head>";
-?>
+</head>
