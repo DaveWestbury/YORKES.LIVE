@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
 
-<?php include "../modules/header.php" ?>
+<?php include "../components/header.php" ?>
 
 
 <body data-bs-spy='scroll' data-bs-target='#navbarID'>
 
-    <?php include "../modules/nav.php"?>
+    <?php include "../components/nav.php"?>
 
     <!-- HEADER IMG -->
     <div style="background-image: url('../gallery/browns/4.jpg'); background-position:center; background-size:cover; height: 600px; position: relative; z-index: -1; ">
@@ -303,7 +303,7 @@
         </div>
     </div>
 
-    <?php include '../modules/footer.php'?>
+    <?php include '../components/footer.php'?>
 
     <script>
     //LOGO BOUNCE

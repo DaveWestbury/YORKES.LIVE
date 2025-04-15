@@ -43,7 +43,7 @@
 
                             <a class="text-light" href="https://yorkepeninsula.com.au/surfing">Surf - YP Tourism</a><br>
                             <a class="text-light" href="https://en.wikipedia.org/wiki/Shaka_sign">Wikipedia - Shaka Handsign</a><br>
-                            <a class="text-light" href="../pages/inmedia.php">Yorkes Live in the Media</a><br>
+                            <a class="text-light" href="../pages/in-media.php">Yorkes Live in the Media</a><br>
                             <a class="text-light" href="https://westburydigital.com.au/bugbounty.php">Responsible Disclosure</a>
 
 
@@ -55,7 +55,7 @@
                             </h5>
                             <p>
                                 <a href="#landing" class="text-light">Top</a><br>
-                                <a href="privacy-policy-yorkes.pdf" class="text-light">Yorkes Live Privacy Policy</a><br>
+                                <a href="../pages/privacy-policy.php" class="text-light">Yorkes Live Privacy Policy</a><br>
                                 <a href="https://policies.google.com/technologies/partner-sites?hl=en-GB&gl=uk" class="text-light">Google Analytics Privacy Policy</a>
                             </p>
 

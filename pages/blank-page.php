@@ -1,12 +1,30 @@
 <!doctype html>
 <html lang="en">
 
-<?php include "./components/header.php" ?>
+<?php include "../components/header.php" ?>
 
 <body data-bs-spy='scroll' data-bs-target='#navbarID'>
-    <?php  include "./components/nav.php" ?>
-    <?php include "db_singlebeach.php" ?>
-    <?php include './components/footer.php'?>
+    
+<?php include "../components/nav.php" ?>
+    <div id='navbumper' class='bg-rich p-0 m-o' style='height: 120px'></div>
+    <div class="text-light bg-rich pb-4 pt-4">
+        <h2 class="text-center">This is a Blank page where anything can be entered.</h2>
+    </div>
+
+    <div id='bg-waves'></div>
+
+    <div class="container" style="height: 1000px;">
+        <div class="row">
+            <div class="col-12 ">
+                <h2>This is a Blank page where anything can be entered.</h2>
+                <h3>Header three</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit exercitationem dolorum culpa ipsum porro perspiciatis ut ipsam repellat qui quisquam dolor, voluptatibus
+                    eligendi voluptatem, aliquam maiores, accusantium enim delectus. Odio.</p>
+            </div>
+        </div>
+    </div>
+
+    <?php include './footer.php'?>
 
     <script>
     //LOGO BOUNCE

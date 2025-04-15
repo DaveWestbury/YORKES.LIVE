@@ -1,8 +1,19 @@
 <?php 
 
-include_once './includes/db_fetchSingleBeach.php';?>
+require_once __DIR__ . '/../config.php'; 
 
-<?php require_once __DIR__ . '/../config.php'; ?>
+include_once './includes/db_fetchSingleBeach.php';
+
+if (isset($safeSpeltName)) {
+    $pageNameOutput = $safeSpeltName;
+    $descriptionOutput = "This is $safeSpeltName on the sunny Yorke Peninsula. Come learn more about the beach and what it has to offer. Don't forget to vote for $safeSpeltName";
+} else {
+    $pageNameOutput = $page;
+    $descriptionOutput =  "This is a page about $page. Come learn more about the Yorke Peninsula.";
+}
+
+?>
+
 
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -14,10 +25,10 @@ include_once './includes/db_fetchSingleBeach.php';?>
         gtag('config', 'G-659MYBSRDE');
     </script>
 
-    <title>YORKES.LIVE | <?= $safeSpeltName ?></title>
+    <title>YORKES.LIVE | <?= $pageNameOutput ?></title>
     <meta charset='UTF-8'>
-    <meta name='description' content='This is <?= $safeSpeltName ?> on the sunny Yorke Peninsula. Come learn more about the beach and what it has to offer. Don&apos;t forget to vote for " . $safeSpeltName . "'>
-    <meta name='keywords' content='yorkes <?= $safeSpeltName ?> yorke peninsula beaches map best surf'>
+    <meta name='description' content='<?= $descriptionOutput ?>'>
+    <meta name='keywords' content='yorkes <?= $pageNameOutput ?> yorke peninsula beaches map best surf'>
     <meta name='author' content='Written by D.W. Hills, Length: 1 pages'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 
