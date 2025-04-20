@@ -20,10 +20,9 @@ if ($connectToServer) {
         $row = mysqli_fetch_assoc($result);
         if ($row) {
             $shakaCoins = $row["coins"];
-            // You can echo it if needed
-            // echo $shakaCoins;
         } else {
-            echo "No record found for IP: $ip";
+            // If no row is returned, set shakaCoins to 0
+            $shakaCoins = 0;
         }
     } else {
         echo "Query failed: " . mysqli_error($connectToServer) . "<br>";

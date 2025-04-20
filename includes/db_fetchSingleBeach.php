@@ -33,7 +33,7 @@ if ($connectToServer) {
 
         }
     } else {
-        echo "No results found.";
+        //echo "No results found.";
     }
 
     $stmt->close();

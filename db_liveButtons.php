@@ -64,15 +64,15 @@ require"db_connect.php";
 	//HUMAN TIME 
 	$time = strtotime($row["last_update"]);
 	
-	echo "
+	echo "	
 
-			<button class='Hotspot beach' " . $row["button_data"]. " aria-label='" . $row["spelt_name"]. "'>
+		<button class='Hotspot beach' " . $row["button_data"]. " aria-label='" . $row["spelt_name"]. "' tabindex='0'>
 
                 <div class='HotspotAnnotation hiddenhotspot'>
 					" . $iconsOutput . "<br>
                     " . $row["spelt_name"] . " <br>
 					<div>
-                    <div class='btn link-secondary fake-anchor' type='' data-bs-toggle='offcanvas' data-bs-target='#" . $row["name"]. "' aria-controls='more info " . $row["spelt_name"]. "'>
+                    <div class='btn link-secondary fake-anchor' data-bs-toggle='offcanvas' data-bs-target='#" . $row["name"]. "' aria-controls='more info " . $row["spelt_name"]. "'>
                         <h5 class=''> More Info <span class='badge  link-light bg-secondary'><i class='fa-solid fa-arrow-down '></i></span></h5>
                     </div>
 					

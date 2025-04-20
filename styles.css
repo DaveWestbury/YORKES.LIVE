@@ -16,12 +16,12 @@ body {
 
 @font-face {
   font-family: TitilliumWeb-Black;
-  src: url(./fonts/TitilliumWeb-Black.ttf);
+  src: url(./assets/fonts/TitilliumWeb-Black.ttf);
   font-display: swap;
 }
 @font-face {
   font-family: TitilliumWeb-Regular;
-  src: url(./fonts/TitilliumWeb-Regular.ttf);
+  src: url(./assets/fonts/TitilliumWeb-Regular.ttf);
   font-display: swap;
 }
 
@@ -253,14 +253,15 @@ padding: 60px;
   } 
 } 
 
-
-
-
 .Hotspot:focus > .hiddenhotspot {
   visibility: visible;
 }
 
 .Hotspot:active > .hiddenhotspot {
+  visibility: visible;
+}
+
+.Hotspot:hover > .hiddenhotspot {
   visibility: visible;
 }
 
@@ -272,9 +273,6 @@ padding: 60px;
 
 .hiddenhotspot{
   visibility: hidden;
-
-
-
 }
 
 .HotspotAnnotation{

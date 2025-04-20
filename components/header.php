@@ -7,6 +7,12 @@ include_once './includes/db_fetchSingleBeach.php';
 if (isset($safeSpeltName)) {
     $pageNameOutput = $safeSpeltName;
     $descriptionOutput = "This is $safeSpeltName on the sunny Yorke Peninsula. Come learn more about the beach and what it has to offer. Don't forget to vote for $safeSpeltName";
+
+} elseif ($page == "Index") {
+
+    $pageNameOutput = "Yorke Peninsula's Best Beach List";
+    $descriptionOutput = "An interactive map of the Yorke Peninsula's best beaches. As voted on by you. Come explore each beach on the Yorke Peninsula with locations, pictures, access and attractions.";
+
 } else {
     $pageNameOutput = $page;
     $descriptionOutput =  "This is a page about $page. Come learn more about the Yorke Peninsula.";
@@ -38,7 +44,7 @@ if (isset($safeSpeltName)) {
     <meta property='og:description' content='An interactive map of the Yorke Peninsula&apos;s best beaches. As voted on by you.' />
     <meta property='og:image' content='https://yorkes.live/fb.png' />
 
-    <link rel="stylesheet" href="<?= BASE_URL ?>styles.css?v=1.0">
+    <link rel="stylesheet" href="<?= BASE_URL ?>styles.css?v=1.1">
 
     <link rel='apple-touch-icon' sizes='180x180' href='./apple-touch-icon.png'>
     <link rel='icon' type='image/png' sizes='32x32' href='./favicon-32x32.png'>
@@ -53,6 +59,12 @@ if (isset($safeSpeltName)) {
     <link href='./fontawesome/css/fontawesome.css' rel='stylesheet'>
     <link href='./fontawesome/css/brands.css' rel='stylesheet'>
     <link href='./fontawesome/css/solid.css' rel='stylesheet'>
+
+    <?php 
+    if ($page == "Index"){
+    echo "<script type='module' src='https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js'></script>";
+    }
+    ?>
 
     <!-- JQUERY -->
     <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
