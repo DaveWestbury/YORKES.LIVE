@@ -1,6 +1,6 @@
 <?php
 
-require"db_connect.php";
+require_once BASE_PATH . "db_connect.php";
 
 
  if (mysqli_connect_errno())
@@ -87,7 +87,7 @@ require"db_connect.php";
   echo "0 results";
 }
 	
-	mysqli_close($connectToServer);
+	//mysqli_close($connectToServer);
 }
 
 

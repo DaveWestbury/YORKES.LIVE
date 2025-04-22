@@ -1,7 +1,8 @@
 <?php
 
-require"db_connect.php";
+echo "test";	
 
+require_once BASE_PATH . "db_connect.php";
 
 function humanTiming ($time) //HUMAN TIME //HUMAN TIME     (blatantly stolen from arnorhns SOF)
 	{
