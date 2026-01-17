@@ -31,7 +31,7 @@ if (isset($safeSpeltName)) {
         gtag('config', 'G-659MYBSRDE');
     </script>
 
-    <title>YORKES.LIVE | <?= htmlspecialchars($pageNameOutput, ENT_QUOTES, 'UTF-8') ?></title>
+    <title>YORKES.LIVE | <?= $pageNameOutput ?></title>
     <meta charset='UTF-8'>
     <meta name='description' content='<?= htmlspecialchars($descriptionOutput, ENT_QUOTES, 'UTF-8') ?>'>
     <meta name='author' content='Written by D.W. Hills, Length: 1 pages'>
