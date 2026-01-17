@@ -31,18 +31,28 @@ if (isset($safeSpeltName)) {
         gtag('config', 'G-659MYBSRDE');
     </script>
 
-    <title>YORKES.LIVE | <?= $pageNameOutput ?></title>
+    <title>YORKES.LIVE | <?= htmlspecialchars($pageNameOutput, ENT_QUOTES, 'UTF-8') ?></title>
     <meta charset='UTF-8'>
-    <meta name='description' content='<?= $descriptionOutput ?>'>
-    <meta name='keywords' content='yorkes <?= $pageNameOutput ?> yorke peninsula beaches map best surf'>
+    <meta name='description' content='<?= htmlspecialchars($descriptionOutput, ENT_QUOTES, 'UTF-8') ?>'>
     <meta name='author' content='Written by D.W. Hills, Length: 1 pages'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta name='theme-color' content='#FF6B35'>
 
-    <meta property='og:url' content='https://yorkes.live' />
+    <!-- Canonical Link -->
+    <link rel='canonical' href='https://yorkes.live<?= htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8') ?>' />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property='og:url' content='https://yorkes.live<?= htmlspecialchars($_SERVER['REQUEST_URI'], ENT_QUOTES, 'UTF-8') ?>' />
     <meta property='og:type' content='website' />
-    <meta property='og:title' content='Yorkes.Live' />
-    <meta property='og:description' content='An interactive map of the Yorke Peninsula&apos;s best beaches. As voted on by you.' />
+    <meta property='og:title' content='<?= htmlspecialchars($pageNameOutput, ENT_QUOTES, 'UTF-8') ?>' />
+    <meta property='og:description' content='<?= htmlspecialchars($descriptionOutput, ENT_QUOTES, 'UTF-8') ?>' />
     <meta property='og:image' content='https://yorkes.live/fb.png' />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:title' content='<?= htmlspecialchars($pageNameOutput, ENT_QUOTES, 'UTF-8') ?>' />
+    <meta name='twitter:description' content='<?= htmlspecialchars($descriptionOutput, ENT_QUOTES, 'UTF-8') ?>' />
+    <meta name='twitter:image' content='https://yorkes.live/fb.png' />
 
     <link rel="stylesheet" href="<?= BASE_URL ?>styles.css?v=1.1">
 
@@ -56,9 +66,9 @@ if (isset($safeSpeltName)) {
         integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous'>
 
     <!-- FONTAWESOME -->
-    <link href='<?= BASE_URL?>fontawesome/css/fontawesome.css' rel='stylesheet'>
-    <link href='<?= BASE_URL?>fontawesome/css/brands.css' rel='stylesheet'>
-    <link href='<?= BASE_URL?>fontawesome/css/solid.css' rel='stylesheet'>
+    <link href='<?= BASE_URL ?>fontawesome/css/fontawesome.css' rel='stylesheet'>
+    <link href='<?= BASE_URL ?>fontawesome/css/brands.css' rel='stylesheet'>
+    <link href='<?= BASE_URL ?>fontawesome/css/solid.css' rel='stylesheet'>
 
     <?php 
     if ($page == "Index"){

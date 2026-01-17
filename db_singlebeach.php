@@ -4,7 +4,7 @@
 	        $iconsArray = explode(",", $safeIcons);
 	        $iconsOutput = ""; 
 	
-            for ($i = 0; $i <= count($iconsArray); $i++) {
+            for ($i = 0; $i < count($iconsArray); $i++) {
                 
                 if ($iconsArray[$i] == "swimming") {
 
@@ -20,7 +20,7 @@
 
                 } elseif ($iconsArray[$i] == "toilets") {
 
-                    $iconsOutput .= "<div class='col-6'><i class='fa-solid fa-restroom display-5' data-bs-toggle='tooltip' data-bs-placement='top' title='Toilets' role='img' aria-label='Toilets'></i><p>Toilets Avaliable</p></div>";
+                    $iconsOutput .= "<div class='col-6'><i class='fa-solid fa-restroom display-5' data-bs-toggle='tooltip' data-bs-placement='top' title='Toilets' role='img' aria-label='Toilets'></i><p>Toilets Available</p></div>";
 
                 } elseif ($iconsArray[$i] == "lookout") {
 
@@ -42,8 +42,8 @@
 
 
             //handles what3words locations and iframes/modals
-            $w3wnameArray = explode(",", htmlspecialchars($row['w3wname'], ENT_QUOTES, 'UTF-8'));
-            $w3wArray = explode(",", htmlspecialchars($row['w3w'], ENT_QUOTES, 'UTF-8'));
+            $w3wnameArray = explode(",", $row['w3wname']);
+            $w3wArray = explode(",", $row['w3w']);
 
             $w3woutput = "";
             
@@ -54,20 +54,20 @@
                 for ($i = 0; $i < count($w3wArray); $i++) {
             
                 $w3woutput .= "
-                                <p class='text-center'><b>" . $w3wnameArray[$i]. "</b><br>
-                                <a class='text-primary' type='button' data-bs-toggle='modal' data-bs-target='#modal-" . $i. "'>" . $w3wArray[$i]. "</a></p>
-                                <div class='modal fade' id='modal-" . $i. "' tabindex='-1' aria-labelledby='" . $w3wnameArray[$i]. "' aria-hidden='true'>
+                                <p class='text-center'><b>" . htmlspecialchars($w3wnameArray[$i], ENT_QUOTES, 'UTF-8'). "</b><br>
+                                <a class='text-primary' type='button' data-bs-toggle='modal' data-bs-target='#modal-" . $i. "'>" . htmlspecialchars($w3wArray[$i], ENT_QUOTES, 'UTF-8'). "</a></p>
+                                <div class='modal fade' id='modal-" . $i. "' tabindex='-1' aria-labelledby='" . htmlspecialchars($w3wnameArray[$i], ENT_QUOTES, 'UTF-8'). "' aria-hidden='true'>
                                     <div class='modal-dialog modal-xl'>
                                         <div class='modal-content'>
                                             <div class='modal-header'>
-                                                <h5 class='modal-title' id='exampleModalLabel'>" . $w3wnameArray[$i]. "</h5>
+                                                <h5 class='modal-title' id='exampleModalLabel'>" . htmlspecialchars($w3wnameArray[$i], ENT_QUOTES, 'UTF-8'). "</h5>
                                                 <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                             </div>
                                             <div class='modal-body '>
-                                                        <iframe title='Map location from what3words'  src='https://map.what3words.com/" . $w3wArray[$i]. "?utm_source=iframe' frameborder='0' style='border:0;width:100%;height:800px;'></iframe>
+                                                        <iframe title='Map location from what3words'  src='https://map.what3words.com/" . htmlspecialchars($w3wArray[$i], ENT_QUOTES, 'UTF-8'). "?utm_source=iframe' frameborder='0' style='border:0;width:100%;height:800px;'></iframe>
                                             </div>
                                             <div class='modal-footer text-center'>
-                                                <p>" . $w3wnameArray[$i]. "</p>
+                                                <p>" . htmlspecialchars($w3wnameArray[$i], ENT_QUOTES, 'UTF-8'). "</p>
                                             </div>
                                         </div>
                                     </div>
@@ -125,7 +125,7 @@ if (count($validImages) === 0) {
 
         // Generate the output for each image  col-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2
         $galleryOutput .= "
-        <div class='col-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2 mb-3 grid-item d-flex justify-content-center align-items-center>
+        <div class='col-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2 mb-3 grid-item d-flex justify-content-center align-items-center'>
             <a type='button' data-bs-toggle='modal' data-bs-target='#Modal-" . htmlspecialchars($baseName, ENT_QUOTES) . "'>
                 <div class='hoverexpand'>
                     <picture>
@@ -164,10 +164,10 @@ if (count($validImages) === 0) {
 
 // Fetch sponsor data from the API
 $apiUrl = "https://westburydigital.com.au/api/rand";
-$apiResponse = file_get_contents($apiUrl);
-$sponsorData = json_decode($apiResponse, true);
+$apiResponse = @file_get_contents($apiUrl);
+$sponsorData = $apiResponse ? json_decode($apiResponse, true) : null;
 
-if ($sponsorData['status'] == 'success') {
+if ($sponsorData && $sponsorData['status'] == 'success') {
     // Extract sponsor information from the API response
     $sponsorName = htmlspecialchars($sponsorData['data']['sponsorName'], ENT_QUOTES, 'UTF-8');
     $sponsorSpeltName = htmlspecialchars($sponsorData['data']['sponsorSpeltName'], ENT_QUOTES, 'UTF-8');
@@ -329,13 +329,13 @@ echo "
     <div class='col-12'>
         <h3 class='text-center my-3 text-uppercase'>Image Gallery of " . $safeSpeltName . "<span class='text-orange'>.</span></h3>
     </div>
-    <div id='gallery' class='row' data-masonry='{' percentPosition': true }'>
+    <div id='gallery' class='row' data-masonry='{\"percentPosition\": true}'>
 
         " . $galleryOutput . "
 
     </div>
 </div>
-<h5 class='h3 feed-your-soul py-2 text-center'>" . $extraText . "Have you taken a photo you would love to <a href='http://yorkes.live/contact'>submit?</a></h5>
+<h5 class='h3 feed-your-soul py-2 text-center'>" . $extraText . "Have you taken a photo you would love to <a href='https://yorkes.live/contact'>submit?</a></h5>
 </div>
 <div class='container'>
     <div class='row py-4'>
@@ -343,7 +343,7 @@ echo "
             <div class='col-12 text-center border-rich bg-light h-100 py-3' style='min-height: 600px;'>
                 <h3 class='text-uppercase'>Instagram Posts<span class='text-orange'>.</span></h3>
                 " . $safeInstagram. "
-                <small class='feed-your-soul py-2 text-center'><a href='http://yorkes.live/contact'>Submit</a> your instgram posts to this section.</small>
+                <small class='feed-your-soul py-2 text-center'><a href='https://yorkes.live/contact'>Submit</a> your instagram posts to this section.</small>
 
             </div>
         </div>

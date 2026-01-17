@@ -169,12 +169,12 @@
 
                 <div class="col-md-4 order-1 order-md-2">
 
-                    <h3 class="mt-4 display-4 text-center text-orange"><i class="fa-solid fa-map-location-dot"></i></h5>
+                    <h3 class="mt-4 display-4 text-center text-orange"><i class="fa-solid fa-map-location-dot"></i></h3>
 
                         <p class="text-center font-weight-light lead">Yorke Peninsula, South Australia</p>
 
 
-                        <h3 class="mt-4 display-4 text-center text-orange"><i class="fa-solid fa-paper-plane"></i></h5>
+                        <h3 class="mt-4 display-4 text-center text-orange"><i class="fa-solid fa-paper-plane"></i></h3>
 
                             <p class="text-center font-weight-light lead">
                                 <a class="text-dark" style="word-wrap:break-word"

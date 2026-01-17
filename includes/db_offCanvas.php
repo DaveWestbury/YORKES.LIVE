@@ -1,6 +1,6 @@
 <?php
 
-echo "test";	
+echo "";	
 
 require_once BASE_PATH . "db_connect.php";
 

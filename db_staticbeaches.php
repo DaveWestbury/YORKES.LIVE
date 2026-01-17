@@ -1,5 +1,5 @@
 <?php
- require"db_connect.php";
+ require "db_connect.php";
 
 
  function staticHumanTiming ($time) //HUMAN TIME //HUMAN TIME     (blatantly stolen from arnorhns SOF)
@@ -48,7 +48,7 @@
 	$iconsArray = explode(",", $row["icons"]);
 	$iconsOutput = ""; 
 	
-	for ($i = 0; $i <= count($iconsArray); $i++) {
+	for ($i = 0; $i < count($iconsArray); $i++) {
 		
 		if ($iconsArray[$i] == "swimming") {
 
@@ -84,35 +84,43 @@
 		}		
 	}
 
-	//HUMAN TIME 
+	//HUMAN TIME
 	$time = strtotime($row["last_update"]);
-	
+
+	// Data is already sanitized in database, no need to double-encode
+	$safeName = $row["name"];
+	$safeTitleImage = $row["title_image"];
+	$safeSpeltName = $row["spelt_name"];
+	$safeWriteUp = $row["write_up"];
+	$safeAccess = $row["access"];
+	$safeShakas = $row["shakas"];
+
 	echo "
 
 	<div class='col-lg-6'>
 	  <div class='card mb-4 border-3 border-rich' >
 		  <div class='row g-0'>
 			  <div class='col-md-4'>
-				  <button class='m-0 p-0 btn border-0' data-bs-toggle='modal' data-bs-target='#" . $row["name"]. "Modal'>
+				  <button class='m-0 p-0 btn border-0' data-bs-toggle='modal' data-bs-target='#" . $safeName. "Modal'>
 					  <div class='hoverexpand'>
 					  	<picture>
-						  <source srcset='./img/big/" . $row["name"]. ".webp'>
-						  <img src='./img/big/" . $row["title_image"]. "' class='img-fluid ' max-width='100%' height='auto' alt='Image of " . $row["spelt_name"]. "'>
+						  <source srcset='./img/big/" . $safeName. ".webp'>
+						  <img src='./img/big/" . $safeTitleImage. "' class='img-fluid ' max-width='100%' height='auto' alt='Image of " . $safeSpeltName. "'>
 					  	</picture>
 						  </div>
 
 				  </button>
-				  <div class='modal fade' id='" . $row["name"]. "Modal' tabindex='-1' aria-labelledby='" . $row["name"]. "ModalLabel' aria-hidden='true'>
+				  <div class='modal fade' id='" . $safeName. "Modal' tabindex='-1' aria-labelledby='" . $safeName. "ModalLabel' aria-hidden='true'>
 					  <div class='modal-dialog modal-lg'>
 						  <div class='modal-content'>
 							  <div class='modal-header'>
-								  <h5 class='modal-title' id='" . $row["name"]. "ModalLabel'>" . $row["spelt_name"]. "</h5>
+								  <h5 class='modal-title' id='" . $safeName. "ModalLabel'>" . $safeSpeltName. "</h5>
 								  <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
 							  </div>
 							  <div class='modal-body'>
 							  	<picture>
-							  		<source srcset='./img/big/" . $row["name"]. ".webp'>
-								  	<img src='./img/big/" . $row["title_image"]. "' class='img-fluid' max-width='100%' height='auto' alt='Image of " . $row["spelt_name"]. " '>
+							  		<source srcset='./img/big/" . $safeName. ".webp'>
+								  	<img src='./img/big/" . $safeTitleImage. "' class='img-fluid' max-width='100%' height='auto' alt='Image of " . $safeSpeltName. " '>
 								</picture>
 							</div>
 
@@ -126,23 +134,23 @@
 			  <div class='col-md-8'>
 				  <div class='card-body'>
 				  	<div class='d-flex mb-1'>
-					  <h3 class='card-title me-auto align-middle text-uppercase pt-2'>" . $row["spelt_name"]. "</h3>
+					  <h3 class='card-title me-auto align-middle text-uppercase pt-2'>" . $safeSpeltName. "</h3>
 
-					  <button id='shakabutton-" . $row["name"]. "' onclick='addShaka(\"" . $row["name"]. "\")' class='shakabutton btn border-orange border-2 position-relative mb-1 me-2' type='button'>
-						<img id='shakaimg-" . $row["name"]. "' class='p-0' height='30px' width='30px' src='img/shaka.svg' alt='Shaka Icon'>
-						<span id='shakacount-" . $row["name"]. "' class='position-absolute top-0 start-100 translate-middle badge rounded-pill text-white bg-reallyorange '>
-						" . $row["shakas"] . "
+					  <button id='shakabutton-" . $safeName. "' onclick='addShaka(\"" . $safeName. "\")' class='shakabutton btn border-orange border-2 position-relative mb-1 me-2' type='button'>
+						<img id='shakaimg-" . $safeName. "' class='p-0' height='30px' width='30px' src='img/shaka.svg' alt='Shaka Icon'>
+						<span id='shakacount-" . $safeName. "' class='position-absolute top-0 start-100 translate-middle badge rounded-pill text-white bg-reallyorange '>
+						" . $safeShakas . "
 						</span>
 					  </button>
 
 					</div>
-					  <p class='card-text'>" . $row["write_up"]. " </p>
+					  <p class='card-text'>" . $safeWriteUp. " </p>
 					  <p> <span class='fw-bold'>Access Via</span>
-						  <br>" . $row["access"]. "
+						  <br>" . $safeAccess. "
 					  </p>
 					  <p class='card-text'><small class='text-muted'>Last updated " . staticHumanTiming($time) . " ago</small></p>
-					  <a href='./" . $row["name"]. "' class='defaultbutton btn btn-sm position-relative border-2 rounded-0'>
-							<p class='text-rich d-inline pt-2 px-4'>See more about " . $row["spelt_name"]. ".</p>
+					  <a href='./" . $safeName. "' class='defaultbutton btn btn-sm position-relative border-2 rounded-0'>
+							<p class='text-rich d-inline pt-2 px-4'>See more about " . $safeSpeltName. ".</p>
 						</a>
 				  </div>
 			  </div>

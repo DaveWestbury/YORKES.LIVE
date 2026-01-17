@@ -1,5 +1,5 @@
     <!-- FOOTER -->
-    <div id=" footer" class="text-light mt-auto">
+    <div id="footer" class="text-light mt-auto">
         <div id="bg-wavesUD" class="p-0 m-0"></div>
         <footer class="text-center text-lg-start bg-rich charleston">
 
@@ -12,10 +12,10 @@
                             aria-label="Facebook link coming soon"></i></p>
                     <p class="me-4 text-blue fake-anchor" data-bs-toggle="tooltip" data-bs-placement="top" title="Google Coming Soon."><i class="fab fa-google fa-2xl" role="img"
                             aria-label="Google link coming soon"></i></p>
-                    <a class="me-4 text-blue fake-anchor" href="https://instagram.com/yorkes.live"data-bs-placement="top" title="Instagram link"><i class="fab fa-instagram fa-2xl" role="img"
-                            aria-label="Instagram link coming soon"></i></a>
+                    <a class="me-4 text-blue fake-anchor" href="https://instagram.com/yorkes.live" data-bs-placement="top" title="Instagram link"><i class="fab fa-instagram fa-2xl" role="img"
+                            aria-label="Instagram link"></i></a>
                     <a class="me-4 text-blue fake-anchor" href="https://github.com/DaveWestbury" data-bs-placement="top" title="Github Link"><i class="fab fa-github fa-2xl" role="img"
-                            aria-label="Github coming soon"></i></a>
+                            aria-label="Github link"></i></a>
                 </div>
 
             </section>
@@ -41,8 +41,7 @@
                                 Info
                             </h5>
 
-                            <a class="text-light" href="https://yorkepeninsula.com.au/surfing">Surf - YP Tourism</a><br>
-                            <a class="text-light" href="https://en.wikipedia.org/wiki/Shaka_sign">Wikipedia - Shaka Handsign</a><br>
+                            <a class="text-light" href="https://minlaton.town" rel="external">Minlaton Town Directory</a><br>
                             <a class="text-light" href="<?=BASE_URL ?>pages/in-media.php">Yorkes Live in the Media</a><br>
                             <a class="text-light" href="https://westburydigital.com.au/bugbounty.php">Responsible Disclosure</a>
 
@@ -66,7 +65,7 @@
             </section>
 
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.09);">
-                <a class="text-light" style="  font-family: Arial, Helvetica, sans-serif;" href="http://westburydigital.com.au">W E S T B U R Y . D I G I T A L</a>
+                <a class="text-light" style="  font-family: Arial, Helvetica, sans-serif;" href="https://westburydigital.com.au">W E S T B U R Y . D I G I T A L</a>
             </div>
 
         </footer>
