@@ -210,7 +210,7 @@ if (file_exists($imagePath)) {
 
     <div id='bg-wavesUD' class='p-0 m-0' style='margin-top: -80px !important; z-index: 2 !important;'></div>
     <div class='bg-rich'>
-        <p class='display-4 text-center feed-your-soul pb-2 text-white m-0'>" . $safeSpeltName . "</p>
+        <h1 class='display-4 text-center feed-your-soul pb-2 text-white m-0'>" . $safeSpeltName . "</h1>
     </div>
     <div id='bg-waves' class='m-0 p-0' style='margin-top: -5px !important; z-index: 3 !important;'></div>
     ";
@@ -225,12 +225,12 @@ echo "
     <div class='text-light'>
         <div class='row gx-0'>
             <div class='mainlike-left col-6 bg-rich d-none d-sm-none d-md-block ' style='position:relative'>
-                <p class='display-4 text-center feed-your-soul ps-4'>" . $safeSpeltName . "</p>
+                <h1 class='display-4 text-center feed-your-soul ps-4'>" . $safeSpeltName . "</h1>
                 <div class='vr'></div>
                 <p class='sideways-text lead h-100'>Beach vibes <span class='squish'>-----------------------</span></p>
             </div>
             <div class='mainlike-right col-md-6 bg-rich text-center'>
-                <p class='display-4 text-center feed-your-soul ps-4 d-md-none'>" . $safeSpeltName . "</p>
+                <h1 class='display-4 text-center feed-your-soul ps-4 d-md-none'>" . $safeSpeltName . "</h1>
                 <div class='overflow-hidden'>
                     <picture>
                         <source srcset='./img/big/" . $safeName . ".webp'>

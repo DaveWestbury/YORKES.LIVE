@@ -9,8 +9,15 @@ $canonicalUrl  = 'https://yorkes.live' . htmlspecialchars($canonicalPath, ENT_QU
 
 if (isset($safeSpeltName)) {
 
+    // Pull description from the write-up; fall back to a generic line
+    $descriptionSnippet = isset($safeBigWriteUp) ? trim(preg_replace('/\s+/', ' ', strip_tags($safeBigWriteUp))) : '';
+    if (strlen($descriptionSnippet) > 150) {
+        $descriptionSnippet = rtrim(substr($descriptionSnippet, 0, 150)) . '…';
+    }
+
     $pageNameOutput  = $safeSpeltName;
-    $descriptionOutput = "Discover " . $safeSpeltName . " on Yorke Peninsula, South Australia. View photos, location, facilities and visitor information for this beautiful Yorke Peninsula beach.";
+    $descriptionOutput = $descriptionSnippet
+        ?: "Discover " . $safeSpeltName . " on Yorke Peninsula, South Australia. View photos, location, facilities and visitor information for this beautiful beach.";
     $ogImage = "https://yorkes.live/img/big/" . htmlspecialchars($safeTitleImage, ENT_QUOTES, 'UTF-8');
     $ogType  = 'article';
 
@@ -55,9 +62,28 @@ if ($page == "Index") {
         ],
     ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 } elseif (isset($safeSpeltName)) {
-    $jsonLd = json_encode([
-        '@context'    => 'https://schema.org',
-        '@type'       => 'TouristAttraction',
+    // Map icon slugs to amenity features
+    $amenityMap = [
+        'swimming' => 'Swimming',
+        'fishing'  => 'Fishing',
+        'caravan'  => 'Camping',
+        'toilets'  => 'Public Toilets',
+        'lookout'  => 'Scenic Lookout',
+        'vehicle'  => '4WD Vehicle Access',
+        'surf'     => 'Surfing',
+    ];
+    $amenities = [];
+    if (isset($safeIcons)) {
+        foreach (explode(',', $safeIcons) as $icon) {
+            $icon = trim($icon);
+            if (isset($amenityMap[$icon])) {
+                $amenities[] = ['@type' => 'LocationFeatureSpecification', 'name' => $amenityMap[$icon], 'value' => true];
+            }
+        }
+    }
+
+    $attractionLd = [
+        '@type'       => ['TouristAttraction', 'Beach'],
         'name'        => $safeSpeltName,
         'description' => $descriptionOutput,
         'image'       => 'https://yorkes.live/img/big/' . $safeTitleImage,
@@ -67,6 +93,22 @@ if ($page == "Index") {
             'addressRegion'  => 'South Australia',
             'addressCountry' => 'AU',
         ],
+    ];
+    if (!empty($amenities)) {
+        $attractionLd['amenityFeature'] = $amenities;
+    }
+
+    $breadcrumbLd = [
+        '@type'           => 'BreadcrumbList',
+        'itemListElement' => [
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Yorkes Live',   'item' => 'https://yorkes.live/'],
+            ['@type' => 'ListItem', 'position' => 2, 'name' => $safeSpeltName,  'item' => 'https://yorkes.live/' . $safeName],
+        ],
+    ];
+
+    $jsonLd = json_encode([
+        '@context' => 'https://schema.org',
+        '@graph'   => [$attractionLd, $breadcrumbLd],
     ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 } else {
     $jsonLd = null;
