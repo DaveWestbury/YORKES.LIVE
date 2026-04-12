@@ -3,7 +3,7 @@
 
 <?php include "../components/header.php" ?>
 
-<body data-bs-spy='scroll' data-bs-target='#navbarID'>
+<body>
     
 <?php include "../components/nav.php" ?>
     <div id='navbumper' class='bg-rich p-0 m-o' style='height: 120px'></div>

@@ -4,7 +4,7 @@
 <?php include "../components/header.php" ?>
 
 
-<body data-bs-spy='scroll' data-bs-target='#navbarID'>
+<body>
 
     <?php include "../components/nav.php"?>
 

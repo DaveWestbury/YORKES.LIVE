@@ -136,6 +136,7 @@
                                     like)</small>
                             </div>
                             <div class="col-md-12 py-3">
+                                <label for="interest" class="form-label">What's your message about?</label>
                                 <select class="form-control border-3 border-rich" id="interest" name="interest">
                                     <option>My favorite beach is missing from the list!</option>
                                     <option>I see a correction that should be made</option>
@@ -219,7 +220,6 @@
 
     <script>
         var atPageTop = true;
-        var scroll = 0;
         let throttleTimer;
 
         const throttle = (callback, time) => {
@@ -229,50 +229,34 @@
                 callback();
                 throttleTimer = false;
             }, time);
+        };
 
+        const navEl     = document.getElementById('nav-color');
+        const brandEl   = document.getElementById('brandbox');
+
+        // Remove the class after animation ends so it can be re-triggered
+        brandEl.addEventListener('animationend', () => {
+            brandEl.classList.remove('bounce-anim');
+        });
+
+        function triggerBounce() {
+            brandEl.classList.remove('bounce-anim');
+            requestAnimationFrame(() => brandEl.classList.add('bounce-anim'));
         }
-
 
         const logobounce = () => {
+            const atTop = window.scrollY === 0;
 
-            //console.log("fired");
-            scroll = parseInt($(window).scrollTop()); //current scroll position
-
-            if (scroll > 0 && (atPageTop == true)) {
-                // $("#nav-height").animate({
-                //     'height': '50px'
-                // }, 100)
-                $("#nav-color").animate({
-                    'min-height': '80px'
-                }, 100)
-                $("#nav-color").animate({
-                    'background-color': 'rgb(3, 25, 38, 1)'
-                }, 100)
-                $("#brandbox").delay(100).effect("bounce", {
-                    times: 3
-                })
+            if (!atTop && atPageTop) {
+                navEl.classList.add('scrolled');
+                triggerBounce();
                 atPageTop = false;
-
-            } else if (scroll == 0) {
-                // $("#nav-height").animate({
-                //     'height': '120px'
-                // }, 100)
-                $("#nav-color").animate({
-                    'min-height': '120px'
-                }, 100, )
-                $("#nav-color").animate({
-                    'background-color': 'rgb(3, 25, 38, .7)'
-                }, 100)
-                $("#brandbox").delay(100).effect("bounce", {
-                    times: 3
-                })
+            } else if (atTop && !atPageTop) {
+                navEl.classList.remove('scrolled');
+                triggerBounce();
                 atPageTop = true;
-
             }
-
-        }
-
-
+        };
 
         window.addEventListener("scroll", () => {
             throttle(logobounce, 250);
@@ -502,7 +486,7 @@
         <!-- masonry for pinterest columns -->
         <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
-            crossorigin="anonymous" async></script>
+            crossorigin="anonymous"></script>
 
         <script>
         var $grid = $('#beachcontainer').imagesLoaded(function() {
@@ -516,11 +500,11 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.1/jquery-ui.min.js"></script>
 
         <script>
-        //intialise tooltips (must be after min.js)
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
+        // Tooltip init — must run after deferred Bootstrap JS, so use DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function(el) { return new bootstrap.Tooltip(el); });
+        });
         </script>
 
 </body>

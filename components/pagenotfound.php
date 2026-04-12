@@ -42,7 +42,7 @@
 
 </head>
 
-<body class='d-flex flex-column min-vh-100' data-bs-spy='scroll' data-bs-target='#navbarID'>
+<body class='d-flex flex-column min-vh-100'>
     <nav id='nav-color' class='navbar fixed-top navbar-expand-sm navbar-dark border-bottom border-3'>
 
         <a class='navbar-brand text-light' href='./index.php'>

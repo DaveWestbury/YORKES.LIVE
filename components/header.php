@@ -164,23 +164,34 @@ if ($page == "Index") {
     <link rel='icon' type='image/png' sizes='16x16' href='./favicon-16x16.png'>
     <link rel='manifest' href='/site.webmanifest'>
 
+    <!-- Preconnect to CDNs used below -->
+    <link rel='preconnect' href='https://cdn.jsdelivr.net' crossorigin>
+    <link rel='preconnect' href='https://code.jquery.com' crossorigin>
+
     <!-- Bootstrap CSS -->
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet'
         integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous'>
 
-    <!-- FontAwesome -->
-    <link href='<?= BASE_URL ?>fontawesome/css/fontawesome.css' rel='stylesheet'>
-    <link href='<?= BASE_URL ?>fontawesome/css/brands.css' rel='stylesheet'>
-    <link href='<?= BASE_URL ?>fontawesome/css/solid.css' rel='stylesheet'>
+    <!-- FontAwesome — loaded async; icons are non-critical for initial paint -->
+    <link rel='preload' as='style' href='<?= BASE_URL ?>fontawesome/css/fontawesome.css' onload="this.rel='stylesheet'">
+    <link rel='preload' as='style' href='<?= BASE_URL ?>fontawesome/css/brands.css'      onload="this.rel='stylesheet'">
+    <link rel='preload' as='style' href='<?= BASE_URL ?>fontawesome/css/solid.css'        onload="this.rel='stylesheet'">
+    <noscript>
+        <link href='<?= BASE_URL ?>fontawesome/css/fontawesome.css' rel='stylesheet'>
+        <link href='<?= BASE_URL ?>fontawesome/css/brands.css' rel='stylesheet'>
+        <link href='<?= BASE_URL ?>fontawesome/css/solid.css' rel='stylesheet'>
+    </noscript>
 
     <?php if ($page == "Index"): ?>
+    <!-- Preload the model-viewer poster so it's the discoverable LCP image -->
+    <link rel='preload' as='image' href='poster.webp' fetchpriority='high'>
     <script type='module' src='https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js'></script>
     <?php endif; ?>
 
     <!-- jQuery -->
     <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
 
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap JS — deferred; Bootstrap 5 is vanilla JS, no jQuery dependency -->
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js'
-        integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous'></script>
+        integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous' defer></script>
 </head>

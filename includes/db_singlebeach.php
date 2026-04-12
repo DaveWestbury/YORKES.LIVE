@@ -234,7 +234,7 @@ echo "
                 <div class='overflow-hidden'>
                     <picture>
                         <source srcset='./img/big/" . $safeName . ".webp'>
-                        <img src='./img/big/" . $safeTitleImage . "' class='img-fluid' style='max-width: 400px;' alt='Image of " . $safeSpeltName . " '>
+                        <img src='./img/big/" . $safeTitleImage . "' class='img-fluid' style='max-width: 400px;' alt='Image of " . htmlspecialchars($safeSpeltName, ENT_QUOTES, 'UTF-8') . "'>
                     </picture>
                 </div>
             </div>

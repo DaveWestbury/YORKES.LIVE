@@ -195,8 +195,23 @@ padding: 60px;
 }
 
 #nav-color {
- background-color: rgb(3, 25, 38, .7); 
- min-height: 120px;
+    background-color: rgb(3, 25, 38, .7);
+    min-height: 120px;
+    transition: min-height 0.1s ease, background-color 0.1s ease;
+}
+#nav-color.scrolled {
+    min-height: 80px;
+    background-color: rgb(3, 25, 38, 1);
+}
+@keyframes logo-bounce {
+    0%, 100% { transform: translateY(0); }
+    20%       { transform: translateY(-6px); }
+    40%       { transform: translateY(0); }
+    60%       { transform: translateY(-3px); }
+    80%       { transform: translateY(0); }
+}
+#brandbox.bounce-anim {
+    animation: logo-bounce 0.45s ease;
 }
 /* #nav-height {
   
