@@ -4,9 +4,10 @@
 <?php include "./components/header.php" ?>
 
 <body data-bs-spy="scroll" data-bs-target="#navbarID">
+    <?php include "./components/nav.php" ?>
+    <main>
+    <h1 class="visually-hidden">Yorke Peninsula Beach Guide</h1>
     <div id="landing" class="">
-        <?php include "./components/nav.php" ?>
-
        <?php include "./components/model-viewer.php" ?>
     </div> <!-- END LANDING  -->
 
@@ -22,19 +23,19 @@
                     <p class="sideways-text lead h-100">Beach vibes <span class="squish">-----------------------</span></p>
                 </div>
                 <div class="mainlike-right col-12 col-md-6 bg-rich">
-                    <h5 class="feed-your-soul py-2">What did you think of the interactive map?</h5>
-                    <h5 class="py-3">Below is a static list of the beaches above. You can use the button below to give yourself 6 'shakas' to vote on your favourite beaches.</h5>
-                    <h5 class="py-3"><u>No login required.</u> Just click!</h5>
+                    <p class="feed-your-soul py-2 h5">What did you think of the interactive map?</p>
+                    <p class="py-3">Below is a static list of the beaches above. You can use the button below to give yourself 6 'shakas' to vote on your favourite beaches.</p>
+                    <p class="py-3"><u>No login required.</u> Just click!</p>
                     <form id="shakaform" class="py-3" method="POST">
                         <button id="shakabutton" type="submit" class="main-shakabutton btn position-relative border-2 rounded-0" type="button">
-                            <h5 class="text-rich d-inline pt-2 px-4" style="float:left;">Start Voting</h5>
+                            <span class="h5 text-rich d-inline pt-2 px-4" style="float:left;">Start Voting</span>
                             <img id="shakaimg" style="float:left;" class="" src="img/shaka.svg" width="40px" alt="Shaka Icon">
                             <span id="shakacount" class="position-absolute top-0 start-100 translate-middle badge bg-rich rounded-pill border border-2 text-light">
                                 2
                             </span>
                         </button>
                     </form>
-                    <h5 id="facebooktext" class="pt-2">&nbsp;</h5>
+                    <p id="facebooktext" class="pt-2 h5">&nbsp;</p>
 
                 </div>
             </div>
@@ -59,7 +60,7 @@
             </div>
             <div class="row col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto bg-rich mb-4">
                 <button id="morebeaches" type="submit" class="main-shakabutton btn btn-lg position-relative border-2 rounded-0">
-                    <h5 class="text-rich d-inline pt-2 px-4">Load More Beaches</h5>
+                    <span class="h5 text-rich d-inline pt-2 px-4">Load More Beaches</span>
                 </button>
             </div>
         </div>
@@ -216,6 +217,7 @@
         </div>
     </div>
 
+    </main>
     <?php include './components/footer.php'?>
 
     <script>

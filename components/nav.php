@@ -7,7 +7,7 @@ include_once BASE_PATH . "includes/db_getCoins.php";
 
 echo "<nav id='nav-color' class='navbar fixed-top navbar-expand-sm navbar-dark border-bottom border-3'>
     <a class='navbar-brand text-light' href='".BASE_URL."index.php'>
-        <h4 id='nav-height' class='d-flex align-content-center flex-wrap'><span id='brandbox' class='align-middle pt-2 ps-4'>YORKES<span class='text-orange'>.</span>LIVE</span></h4>
+        <span id='nav-height' class='d-flex align-content-center flex-wrap h4'><span id='brandbox' class='align-middle pt-2 ps-4'>YORKES<span class='text-orange'>.</span>LIVE</span></span>
     </a>
     <button class='navbar-toggler text-light' type='button' data-bs-toggle='collapse' data-bs-target='#navbarID' aria-controls='navbarID' aria-expanded='false'
         aria-label='Toggle navigation'>
@@ -28,7 +28,7 @@ echo "<nav id='nav-color' class='navbar fixed-top navbar-expand-sm navbar-dark b
                                 <span id='coins' class='align-middle text-blue p-2 '>
                                     " . $shakaCoins .  "
                                 </span>
-                            </h4>
+                            </span>
                         </p>
                         <img id='' class='me-4' src='".BASE_URL."img/shakawhite.png' width='45px' height='45px' alt='Shaka Icon'>
                     </li>
