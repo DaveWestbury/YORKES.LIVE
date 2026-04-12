@@ -1,7 +1,11 @@
-db_connect.php
-mail.php
+# Credentials — never commit these
+includes/db_connect.php
+api/mail.php
+
+# Large/generated assets
 fontawesome/
 bootstrap-5*/
 gallery/
+
+# Environment config
 config.php
-api/

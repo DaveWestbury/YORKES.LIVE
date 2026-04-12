@@ -1,5 +1,5 @@
 <?php
-require "db_connect.php";
+require __DIR__ . "/includes/db_connect.php";
 
 if ($connectToServer) {
     // Get the sponsor URL from the form submission

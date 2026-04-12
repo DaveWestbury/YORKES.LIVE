@@ -1,6 +1,6 @@
 <?php
 
-require_once BASE_PATH . "db_connect.php";
+require_once BASE_PATH . "includes/db_connect.php";
 
 
  if (mysqli_connect_errno())

@@ -1,16 +1,16 @@
 <?php
 
-require"db_connect.php"; 
+require_once __DIR__ . '/../includes/db_connect.php';
 
 if($connectToServer)
 {
-    $ip = $_SERVER['REMOTE_ADDR']; 
+    $ip = $_SERVER['REMOTE_ADDR'];
 
     $shakas = intval("1");
     $coins = intval("6");
 
     $sql = "SELECT 1 FROM mainpage WHERE ip = '$ip'";
-	$result = mysqli_query($connectToServer, $sql);
+    $result = mysqli_query($connectToServer, $sql);
 
     if (mysqli_num_rows($result)){
         echo "found";
@@ -23,10 +23,9 @@ if($connectToServer)
     }
 
 
-    
 mysqli_close($connectToServer);
 
-	
+
 }
 
 

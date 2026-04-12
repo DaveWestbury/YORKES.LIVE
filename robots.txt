@@ -1,14 +1,26 @@
 # robots.txt for yorkes.live
 
 User-agent: *
+
+# Internal application directories — not for indexing
+Disallow: /api/
+Disallow: /includes/
+Disallow: /components/
+Disallow: /PHPMailer/
+Disallow: /fontawesome/
+Disallow: /assets/
+Disallow: /ideas/
+
+# Specific files
+Disallow: /config.php
+Disallow: /log_and_redirect.php
+Disallow: /send.txt
+
+# Non-existent paths (legacy)
 Disallow: /private/
 Disallow: /tmp/
 Disallow: /admin/
 Disallow: /login/
-Disallow: /*what3words.com*
-
-# Allow everything else
-Allow: /
 
 # Sitemap
 Sitemap: https://yorkes.live/sitemap.xml

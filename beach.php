@@ -5,7 +5,7 @@
 
 <body data-bs-spy='scroll' data-bs-target='#navbarID'>
     <?php  include "./components/nav.php" ?>
-    <?php include "db_singlebeach.php" ?>
+    <?php include BASE_PATH . "includes/db_singlebeach.php" ?>
     <?php include './components/footer.php'?>
 
     <script>

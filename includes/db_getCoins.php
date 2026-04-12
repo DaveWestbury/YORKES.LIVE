@@ -1,5 +1,5 @@
 <?php
-require_once BASE_PATH . "db_connect.php";
+require_once BASE_PATH . "includes/db_connect.php";
 
 if (!isset($connectToServer)) {
     echo "Connection variable not set.";

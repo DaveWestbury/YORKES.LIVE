@@ -54,7 +54,7 @@
             </div>
             <div id="beachcontainer" class="row masonary" data-masonry='{"percentPosition": true }'>
 
-                <?php include "db_staticbeaches.php"?>
+                <?php include BASE_PATH . "includes/db_staticbeaches.php"?>
 
             </div>
             <div class="row col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto bg-rich mb-4">
@@ -120,7 +120,7 @@
             <h2 class="text-center p-0">CONTACT<span class="text-orange">.</span></h2>
             <div class="row" style="margin-top: 30px;">
                 <div class="col-md-8 order-2 order-md-1">
-                    <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+                    <form id="contact-form" name="contact-form" action="api/mail.php" method="POST">
                         <div class="row">
                             <div class="col-md-6 py-3">
                                 <input type="text" class="form-control border-3 border-rich" id="name" name="name" placeholder="Name">
@@ -186,37 +186,38 @@
 
 
         </div>
+    </div> <!-- END CONTACT -->
 
-        <!-- TOAST -->
-        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-            <div id="" class="toast 6shakas hide" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header bg-orange">
-                    <strong class="me-auto text-light">YORKES.LIVE</strong>
-                    <small class="text-light">Added Just Now.</small>
-                    <button type="button text-light" class="btn-close  btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    6 Shakas Added. Use them to give to your favorite beaches.
-                </div>
+    <!-- TOAST -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="" class="toast 6shakas hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-orange">
+                <strong class="me-auto text-light">YORKES.LIVE</strong>
+                <small class="text-light">Added Just Now.</small>
+                <button type="button text-light" class="btn-close  btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                6 Shakas Added. Use them to give to your favorite beaches.
             </div>
         </div>
+    </div>
 
-        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-            <div id="" class="toast noshakas hide" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header bg-orange">
-                    <strong class="me-auto text-light">YORKES.LIVE</strong>
-                    <small class="text-light">Added Just Now.</small>
-                    <button type="button text-light" class="btn-close  btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    You have no shakas left. But thanks for voting!
-                </div>
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="" class="toast noshakas hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-orange">
+                <strong class="me-auto text-light">YORKES.LIVE</strong>
+                <small class="text-light">Added Just Now.</small>
+                <button type="button text-light" class="btn-close  btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                You have no shakas left. But thanks for voting!
             </div>
         </div>
+    </div>
 
-        <?php include './components/footer.php'?>
+    <?php include './components/footer.php'?>
 
-        <script>
+    <script>
         var atPageTop = true;
         var scroll = 0;
         let throttleTimer;
@@ -350,7 +351,7 @@
 
 
             $.ajax({
-                url: "db_beachShaka.php",
+                url: "api/db_beachShaka.php",
                 type: "POST",
                 data: 'name=' + nametest,
                 success: function(data) {
@@ -375,7 +376,7 @@
 
         $(document).ready(function() {
             var clicks = 0;
-            var shakacount = <?php include "db_getShakas.php"?>;
+            var shakacount = <?php include BASE_PATH . "includes/db_getShakas.php"?>;
 
 
 
@@ -393,7 +394,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: 'db_postShaka.php',
+                    url: 'api/db_postShaka.php',
                     data: shakaone,
 
                     success: function(response) {
@@ -436,7 +437,7 @@
             console.log("click");
             $('#morebeaches').text("loading..");
             $.ajax({
-                url: "db_moreBeaches.php",
+                url: "api/db_moreBeaches.php",
                 dataType: "html",
                 success: function(data) {
                     //$('#beachcontainer').append(data);
@@ -471,7 +472,7 @@
                 'message': $('textarea[name=message]').val()
             };
             $.ajax({
-                url: "mail.php",
+                url: "api/mail.php",
                 type: "POST",
                 dataType: 'json',
                 data: formData,

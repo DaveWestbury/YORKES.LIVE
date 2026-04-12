@@ -1,11 +1,11 @@
 <?php
 
             //handles icons
-	        $iconsArray = explode(",", $safeIcons);
-	        $iconsOutput = ""; 
-	
+            $iconsArray = explode(",", $safeIcons);
+            $iconsOutput = "";
+
             for ($i = 0; $i < count($iconsArray); $i++) {
-                
+
                 if ($iconsArray[$i] == "swimming") {
 
                     $iconsOutput .= "<div class='col-6'><i class='fa-solid fa-person-swimming display-5' data-bs-toggle='tooltip' data-bs-placement='top' title='Swimming Beach' role='img' aria-label='Swimming Beach'></i><p>Swimming Beach</p></div> ";
@@ -37,7 +37,7 @@
                 } elseif ($iconsArray[$i] == "surf") {
 
                     $iconsOutput .= "<div class='col-6'><i class='fa-solid fa-water display-5' data-bs-toggle='tooltip' data-bs-placement='top' title='Surf' role='img' aria-label='Surf'></i><p>Surf Beach</p></div>";
-                }		
+                }
             }
 
 
@@ -46,13 +46,13 @@
             $w3wArray = explode(",", $row['w3w']);
 
             $w3woutput = "";
-            
+
             if (empty($row["w3wname"]) || empty($row["w3w"])) {
                 $w3woutput = "This table is empty.";
             } else {
 
                 for ($i = 0; $i < count($w3wArray); $i++) {
-            
+
                 $w3woutput .= "
                                 <p class='text-center'><b>" . htmlspecialchars($w3wnameArray[$i], ENT_QUOTES, 'UTF-8'). "</b><br>
                                 <a class='text-primary' type='button' data-bs-toggle='modal' data-bs-target='#modal-" . $i. "'>" . htmlspecialchars($w3wArray[$i], ENT_QUOTES, 'UTF-8'). "</a></p>
@@ -123,7 +123,7 @@ if (count($validImages) === 0) {
         // Set the preferred image for the modal (non-thumb version, prioritize webp, fallback to jpg)
         $imgSrc = file_exists($webpPath) ? $webpPath : $jpgPath;
 
-        // Generate the output for each image  col-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2
+        // Generate the output for each image
         $galleryOutput .= "
         <div class='col-6 col-md-4 col-lg-3 col-xl-2 col-xxl-2 mb-3 grid-item d-flex justify-content-center align-items-center'>
             <a type='button' data-bs-toggle='modal' data-bs-target='#Modal-" . htmlspecialchars($baseName, ENT_QUOTES) . "'>
@@ -174,7 +174,7 @@ if ($sponsorData && $sponsorData['status'] == 'success') {
     $sponsorWriteUp = htmlspecialchars($sponsorData['data']['sponsorWriteUp'], ENT_QUOTES, 'UTF-8');
     $sponsorURL = htmlspecialchars($sponsorData['data']['sponsorURL'], ENT_QUOTES, 'UTF-8');
     $sponsorimg = htmlspecialchars($sponsorData['data']['sponsorImg'], ENT_QUOTES, 'UTF-8');
-    
+
     // Output the sponsor information as a clickable form
     $sponsorOutput = "
         <small>Local Sponsor</small>
@@ -184,15 +184,11 @@ if ($sponsorData && $sponsorData['status'] == 'success') {
         </div>
         <h3 class='text-center text-uppercase text-reset'>" . $sponsorSpeltName . "<span class='text-orange'>.</span></h3>
         <p class='text-reset'>" . $sponsorWriteUp . "</p>
-            
+
         ";
 } else {
     $sponsorOutput = "No sponsors found";
 }
-
-
-
-
 
 
 //this script sees if there is a image called pano in the gallery folder. if not use the default image.
@@ -207,18 +203,18 @@ if (file_exists($imagePath)) {
     echo "
     <div style=\"background-image: url('./gallery/". $safeName ."/pano.jpg'); background-position:center; background-size:cover; height: 500px !important; position: relative; z-index: -1;\">
         <p class='sideways-text lead h-100' style='position: absolute; top: 100px; z-index: 1; text-shadow: 0px 0px 5px black, 0px 0px 5px black, 0px 0px 10px black;'>
-            <a class='text-white' style='text-decoration: none;' href='./browns/'>Panoramic</a> 
+            <a class='text-white' style='text-decoration: none;' href='./browns/'>Panoramic</a>
             <span class='squish'>-----------------------</span>
         </p>
     </div>
-    
+
     <div id='bg-wavesUD' class='p-0 m-0' style='margin-top: -80px !important; z-index: 2 !important;'></div>
     <div class='bg-rich'>
         <p class='display-4 text-center feed-your-soul pb-2 text-white m-0'>" . $safeSpeltName . "</p>
     </div>
     <div id='bg-waves' class='m-0 p-0' style='margin-top: -5px !important; z-index: 3 !important;'></div>
     ";
-    
+
 
 
 } else {
@@ -257,9 +253,6 @@ echo "
 }
 
 
-
-
-
 echo "
 <div class='container'>
     <div class='row my-3'>
@@ -282,7 +275,7 @@ echo "
                 <div class='col-12 border-rich bg-light text-center p-3'>
                     <h3 class='text-uppercase'>Alternate names for " . $safeSpeltName . "<span class='text-orange'>.</span></h3>
                     <p>" . $safeAltNames . "</p>
-                </div> 
+                </div>
                 <div class='col-12 bg-light border-rich p-3 mt-3  position-relative'>
                     <p>" . $sponsorOutput . "</p>
                 </div>
@@ -296,8 +289,7 @@ echo "
                     <p>Beach Locations can be confusing, <a href='https://what3words.com/about'>What3Words</a> is the perfect way to show locations in a very simple but precise way.</p>
                     <small class='p-0 m-0 float-end'><a class='text-secondary' href='./index.php#contact' data-bs-toggle='tooltip' data-bs-placement='top' title='Take me to contact page.'>Not Correct?</a></small>
 
-                
-                
+
                 </div>
             </div>
         </div>
@@ -382,4 +374,3 @@ echo "
 </div>";
 
 ?>
-

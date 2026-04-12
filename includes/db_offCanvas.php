@@ -2,7 +2,7 @@
 
 echo "";	
 
-require_once BASE_PATH . "db_connect.php";
+require_once BASE_PATH . "includes/db_connect.php";
 
 function humanTiming ($time) //HUMAN TIME //HUMAN TIME     (blatantly stolen from arnorhns SOF)
 	{
@@ -140,7 +140,7 @@ function humanTiming ($time) //HUMAN TIME //HUMAN TIME     (blatantly stolen fro
   echo "0 results";
 }
 	
-	mysqli_close($connectToServer);
+	//mysqli_close($connectToServer);
 }
 
 
