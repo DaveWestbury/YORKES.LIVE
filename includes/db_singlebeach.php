@@ -160,35 +160,10 @@ if (count($validImages) === 0) {
 }
 
 
-// handles sponsors output
-
-// Fetch sponsor data from the API
-$apiUrl = "https://westburydigital.com.au/api/rand";
-$apiResponse = @file_get_contents($apiUrl);
-$sponsorData = $apiResponse ? json_decode($apiResponse, true) : null;
-
-if ($sponsorData && $sponsorData['status'] == 'success') {
-    // Extract sponsor information from the API response
-    $sponsorName = htmlspecialchars($sponsorData['data']['sponsorName'], ENT_QUOTES, 'UTF-8');
-    $sponsorSpeltName = htmlspecialchars($sponsorData['data']['sponsorSpeltName'], ENT_QUOTES, 'UTF-8');
-    $sponsorWriteUp = htmlspecialchars($sponsorData['data']['sponsorWriteUp'], ENT_QUOTES, 'UTF-8');
-    $sponsorURL = htmlspecialchars($sponsorData['data']['sponsorURL'], ENT_QUOTES, 'UTF-8');
-    $sponsorimg = htmlspecialchars($sponsorData['data']['sponsorImg'], ENT_QUOTES, 'UTF-8');
-
-    // Output the sponsor information as a clickable form
-    $sponsorOutput = "
-        <small>Local Sponsor</small>
-        <a href='https://westburydigital.com.au/api/click/index.php?url=".$sponsorURL."&referer=yorkes.live' id='sponsorLink' class='stretched-link'></a>
-        <div class='d-flex justify-content-center'>
-            <img class='img-fluid pb-3' width='60%' src='./img/sponsors/" . $sponsorimg . ".webp' alt='advertising logo for " . $sponsorSpeltName . "'>
-        </div>
-        <h3 class='text-center text-uppercase text-reset'>" . $sponsorSpeltName . "<span class='text-orange'>.</span></h3>
-        <p class='text-reset'>" . $sponsorWriteUp . "</p>
-
-        ";
-} else {
-    $sponsorOutput = "No sponsors found";
-}
+// handles sponsors output via async widget (loads after page render so a slow/failed API never blocks the page)
+ob_start();
+include BASE_PATH . 'sponsor-widget.php';
+$sponsorOutput = ob_get_clean();
 
 
 //this script sees if there is a image called pano in the gallery folder. if not use the default image.
@@ -277,7 +252,7 @@ echo "
                     <p>" . $safeAltNames . "</p>
                 </div>
                 <div class='col-12 bg-light border-rich p-3 mt-3  position-relative'>
-                    <p>" . $sponsorOutput . "</p>
+                    " . $sponsorOutput . "
                 </div>
                 <div class='col-12 bg-light border-rich p-3 mt-3'>
                     <h3 class='text-center text-uppercase'>Surf Report<span class='text-orange'>.</span></h3>
