@@ -22,16 +22,12 @@ echo "<nav id='nav-color' class='navbar fixed-top navbar-expand-sm navbar-dark b
             <a class='nav-link nav-item  nav-text-light ps-2' aria-current='page' href='".BASE_URL."index.php#contact'><span class='align-middle'>Contact</span></a>
         </div>
         <ul class='navbar-nav  ms-auto'>
-        <li class='nav-item d-flex'>
-                        <p class='nav-link text-light' aria-current='page' href='#beaches'>
-                            <h4>
-                                <span id='coins' class='align-middle text-blue p-2 '>
-                                    " . $shakaCoins .  "
-                                </span>
-                            </span>
-                        </p>
-                        <img id='' class='me-4' src='".BASE_URL."img/shakawhite.png' width='45px' height='45px' alt='Shaka Icon'>
-                    </li>
+            <li class='nav-item d-flex align-items-center'>
+                <img class='ms-2' src='".BASE_URL."img/shakawhite.png' width='45px' height='45px' alt='Shaka Icon'>
+                <h4 class='m-0'>
+                    <span id='coins' class='align-middle text-blue p-2 me-2'>" . $shakaCoins . "</span>
+                </h4>
+            </li>
         </ul>
     </div>
 </nav>"
